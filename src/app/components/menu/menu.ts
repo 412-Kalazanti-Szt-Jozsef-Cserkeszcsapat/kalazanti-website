@@ -8,5 +8,9 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   styleUrl: './menu.css',
 })
 export class Menu {
-
+  routes = [
+    { path: '', label: 'Kezdőlap', exact: true },
+    { path: 'rolunk', label: 'Rólunk', exact: false },
+    { path: 'kapcsolat', label: 'Kapcsolat', exact: false },
+  ];
 }
