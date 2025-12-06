@@ -10,6 +10,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 export class Menu {
   routes = [
     { path: '', label: 'Kezdőlap', exact: true },
+    { path: 'programok', label: 'Programok', exact: false },
     { path: 'rolunk', label: 'Rólunk', exact: false },
     { path: 'kapcsolat', label: 'Kapcsolat', exact: false },
   ];

@@ -1,11 +1,11 @@
 <nav class="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-6 md:px-10">
   <!-- Logo Section (Left) -->
-  <a routerLink="" class="flex items-center gap-3 text-white no-underline transition-opacity hover:opacity-80 rounded-2xl  p-1 backdrop-blur-md shadow-lg">
+  <a routerLink="" class="flex items-center gap-3 text-white no-underline transition-opacity hover:opacity-85 rounded-3xl  p-1 backdrop-blur-md shadow-lg">
     <img src="logo-transparent.png" alt="logo" class="h-16 w-16 object-contain brightness-0 invert filter">
   </a>
 
   <!-- Navigation Menu (Right - Pill Shape) -->
-  <div class="flex items-center gap-1 rounded-full border border-white/10 bg-[#111]/80 p-1 backdrop-blur-md shadow-lg">
+  <div class="flex items-center gap-1 rounded-full border border-white/10 bg-[#111]/50 p-1 backdrop-blur-md shadow-lg">
     @for (route of routes; track route.path) {
       <a [routerLink]="route.path"
       routerLinkActive="bg-green-500 text-white shadow-md font-semibold"
