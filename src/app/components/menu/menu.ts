@@ -11,6 +11,7 @@ export class Menu {
   routes = [
     { path: '', label: 'Kezdőlap', exact: true },
     { path: 'programok', label: 'Programok', exact: false },
+    { path: 'hirek', label: 'Hírek', exact: false },
     { path: 'rolunk', label: 'Rólunk', exact: false },
     { path: 'kapcsolat', label: 'Kapcsolat', exact: false },
   ];
