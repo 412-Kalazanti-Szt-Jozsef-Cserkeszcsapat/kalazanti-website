@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+
+html, body {
+  height: 100%;
+  background-color: #000000;
+  color: #e4e4e4;
+}
+body {
+  margin: 0;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-style: normal;
+}
