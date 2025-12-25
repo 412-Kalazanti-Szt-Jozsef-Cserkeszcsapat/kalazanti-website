@@ -5,14 +5,25 @@
   </a>
 
   <!-- Navigation Menu (Right - Pill Shape) -->
-  <div class="flex items-center gap-1 rounded-full border border-white/10 bg-[#111]/50 p-1 backdrop-blur-md shadow-lg">
+  <div class="flex items-center gap-1 rounded-full border border-white/10 bg-[#111]/50 px-1 p-1 backdrop-blur-md shadow-lg">
     @for (route of routes; track route.path) {
       <a [routerLink]="route.path"
       routerLinkActive="bg-green-500 text-white shadow-md font-semibold"
       [routerLinkActiveOptions]="{ exact: route.exact }"
-      class="m-plus-rounded-1c-bold rounded-full px-5 py-2 text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white hover:bg-white/5">
+      class="m-plus-rounded-1c-bold rounded-full px-5 py-3 text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white hover:bg-white/5">
         {{ route.label }}
       </a>
     }
+    <div class="flex items-center">
+      <a href="https://www.facebook.com/kalazanti" class="flex items-center justify-center rounded-full p-2 transition-all duration-200 hover:bg-white/5" target="_blank">
+        <img src="/img/facebook_logo_128.png" alt="Facebook Logo" class="h-7 w-7">
+      </a>
+      <a href="https://www.instagram.com/412kalazanti/" class="flex items-center justify-center rounded-full p-2 transition-all duration-200 hover:bg-white/5" target="_blank">
+        <img src="/img/instagram_logo_128.png" alt="Facebook Logo" class="h-7 w-7">
+      </a>
+      <a href="https://www.tiktok.com/@412kalazanti" class="flex items-center justify-center rounded-full p-2 transition-all duration-200 hover:bg-white/5" target="_blank">
+        <img src="/img/tiktok_logo_128.png" alt="Facebook Logo" class="h-8 w-8">
+      </a>
+    </div>
   </div>
 </nav>
