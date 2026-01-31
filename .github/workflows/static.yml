@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # IMPORTANT: Change 'YOUR_PROJECT_NAME' here too
-          path: dist/YOUR_PROJECT_NAME
+          path: dist/kalazanti-website/browser
 
       - name: Deploy to GitHub Pages
         id: deployment
