@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Angular App to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -15,14 +15,13 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Single deploy job
   deploy:
     environment:
       name: github-pages
@@ -31,13 +30,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # 1. Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 2. Install dependencies (npm ci is faster/safer for CI than npm install)
+      - name: Install Dependencies
+        run: npm ci
+
+      # 3. Build the Angular Application
+      - name: Build Angular App
+        run: npm run build -- --configuration production
+
+      # 4. Duplicate index.html to 404.html to handle Angular routing
+      - name: Generate 404.html
+        run: cp dist/YOUR_PROJECT_NAME/index.html dist/YOUR_PROJECT_NAME/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # 5. Point this to your build output folder, NOT the root ('.')
+          path: dist/YOUR_PROJECT_NAME
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
