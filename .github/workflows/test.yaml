@@ -24,4 +24,5 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Run Tests
-        run: npm test -- --watch=false
+        # Using --watch=false is important in CI so the process exits after testing
+        run: npx ng test --watch=false
