@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Run the application
-FROM node:20-alpine AS production
+FROM node:22-alpine AS production
 
 WORKDIR /app
 
