@@ -25,4 +25,4 @@ jobs:
 
       - name: Run Tests
         # Using --watch=false is important in CI so the process exits after testing
-        run: npx ng test --watch=false
+        run: npm test -- --watch=false
