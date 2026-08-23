@@ -3,8 +3,7 @@ import { Home } from './pages/home/home';
 import { NotFound } from './pages/not-found/not-found';
 import { Programok } from './pages/programok/programok';
 import { Kapcsolat } from './pages/kapcsolat/kapcsolat';
-import { Hirek } from './pages/hirek/hirek';
-
+import { Hirek } from './features/hirek/hirek/hirek';
 export const routes: Routes = [
   {
     path: '',
