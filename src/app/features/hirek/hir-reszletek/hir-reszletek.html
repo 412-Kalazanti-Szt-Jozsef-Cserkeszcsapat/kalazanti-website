@@ -1,0 +1,19 @@
+@if (cikk()) {
+  <article class="cikk-kontener">
+    <!-- Gomb helyett linket használunk a biztos működésért -->
+   <a class="vissza-gomb" [routerLink]="['/hirek']" style="display: inline-block;">
+  &larr; Vissza a hírekhez
+</a>
+    
+    <!-- Cikk címe -->
+    <h1 class="cikk-cim">{{ cikk()?.title }}</h1>
+    
+    <!-- A szerverről jövő HTML tartalom beillesztése -->
+    <div class="cikk-tartalom" [innerHTML]="cikk()?.content"></div>
+  </article>
+} @else {
+  <!-- Betöltő (loading) képernyő -->
+  <div class="betoltes-kontener">
+    <p>A cikk betöltése folyamatban...</p>
+  </div>
+}

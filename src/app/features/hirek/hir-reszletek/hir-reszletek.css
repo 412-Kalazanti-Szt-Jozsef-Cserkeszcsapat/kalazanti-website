@@ -1,0 +1,52 @@
+    .cikk-kontener {
+  max-width: 800px;
+  margin: 0 auto; /* Középre igazítja az egész cikket */
+  padding: 40px 20px;
+}
+
+.vissza-gomb {
+  background-color: transparent;
+  border: none;
+  color: #4e6b18; /* Zöldes árnyalat a korábbi JSON alapján */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+.vissza-gomb:hover {
+  text-decoration: underline;
+}
+
+.cikk-cim {
+  font-size: 36px;
+  color: #2e3a31;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cikk-tartalom {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 
+  Ezzel a trükkel (módszerrel, technikával) az Angular
+  a beágyazott HTML-ben lévő képeket is reszponzívvá teszi! 
+*/
+::ng-deep .cikk-tartalom img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.betoltes-kontener {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 20px;
+  color: #666;
+}

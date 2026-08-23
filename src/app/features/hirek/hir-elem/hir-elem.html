@@ -1,12 +1,12 @@
-<div class="hir-card">
-  <div class="hir-content">
-    <h3>{{ adat().title }}</h3>
-    <div [innerHTML]="adat().content"></div>
-  </div>
-  
-  @if (adat().thumbnailImage) {
+<!-- A kártyára kattintva a /hirek/cikk-url-je útvonalra navigálunk -->
+<div class="hir-card" [routerLink]="['/hirek', adat().url]">
+  @if (teljesKepUrl()) {
     <div class="hir-image-container">
-      <img [src]="adat().thumbnailImage" [alt]="adat().title">
+      <img [src]="teljesKepUrl()" [alt]="adat().title">
     </div>
   }
+  
+  <div class="hir-content">
+    <h3>{{ adat().title }}</h3>
+  </div>
 </div>
