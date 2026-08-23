@@ -1,19 +1,25 @@
-@if (cikk()) {
-  <article class="cikk-kontener">
-    <!-- Gomb helyett linket használunk a biztos működésért -->
-   <a class="vissza-gomb" [routerLink]="['/hirek']" style="display: inline-block;">
-  &larr; Vissza a hírekhez
-</a>
-    
-    <!-- Cikk címe -->
-    <h1 class="cikk-cim">{{ cikk()?.title }}</h1>
-    
-    <!-- A szerverről jövő HTML tartalom beillesztése -->
-    <div class="cikk-tartalom" [innerHTML]="cikk()?.content"></div>
-  </article>
-} @else {
-  <!-- Betöltő (loading) képernyő -->
-  <div class="betoltes-kontener">
-    <p>A cikk betöltése folyamatban...</p>
+<section class="min-h-screen bg-black pt-32 pb-24 px-4 sm:px-6 lg:px-8 text-white">
+  <div class="max-w-4xl mx-auto">
+    @if (cikk()) {
+      <article class="bg-[#131613] rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/10">
+        <a [routerLink]="['/hirek']" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold mb-6 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Vissza a hírekhez
+        </a>
+
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
+          {{ cikk()?.title }}
+        </h1>
+
+        <div class="cikk-tartalom text-gray-300 leading-relaxed text-base sm:text-lg" [innerHTML]="cikk()?.content"></div>
+      </article>
+    } @else {
+      <app-loading-screen
+        [szoveg]="'Cikk betöltése folyamatban...'"
+        [alcim]="'412. Kalazanti Szent József Cserkészcsapat'"
+      />
+    }
   </div>
-}
+</section>

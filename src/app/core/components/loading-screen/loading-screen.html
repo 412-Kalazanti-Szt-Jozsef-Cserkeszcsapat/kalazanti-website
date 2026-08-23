@@ -1,0 +1,13 @@
+<div [class]="teljesKepernyo() ? 'fixed inset-0 z-50 flex items-center justify-center bg-black px-4' : 'flex flex-col items-center justify-center py-20 px-4 w-full'">
+  <div class="flex flex-col items-center text-center">
+    <!-- Egyszerű zöld spinner közepén a cserkész logóval -->
+    <div class="relative w-16 h-16 mb-4 flex items-center justify-center">
+      <div class="w-16 h-16 rounded-full border-3 border-white/10 border-t-green-500 animate-spin"></div>
+      <img src="/logo-transparent.png" alt="Kalazanti Cserkészcsapat" class="absolute h-7 w-7 brightness-0 invert opacity-90" />
+    </div>
+    
+    <p class="text-white font-medium text-base tracking-wide">{{ szoveg() }}</p>
+    <p class="text-gray-400 text-xs mt-1">{{ alcim() }}</p>
+  </div>
+</div>
+

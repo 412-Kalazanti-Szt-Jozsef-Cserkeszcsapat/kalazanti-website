@@ -1,15 +1,17 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router'; // A RouterLink kell a Vissza gombhoz
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BlogService } from '../../../core/services/blog.service';
 import { BlogPost } from '../../../core/models/blog-post.model';
+import { LoadingScreenComponent } from '../../../core/components/loading-screen/loading-screen';
 
 @Component({
   selector: 'app-hir-reszletek',
   standalone: true,
-  imports: [RouterLink], // Ide is be kell tenni
-  templateUrl: './hir-reszletek.html', // Most már a külső HTML-re hivatkozunk
-  styleUrl: './hir-reszletek.css'      // És a külső CSS-re
+  imports: [RouterLink, LoadingScreenComponent],
+  templateUrl: './hir-reszletek.html',
+  styleUrl: './hir-reszletek.css'
 })
+
 export class HirReszletek implements OnInit {
   private route = inject(ActivatedRoute);
   private blogService = inject(BlogService);

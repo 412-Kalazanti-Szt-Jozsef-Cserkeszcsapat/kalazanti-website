@@ -1,52 +1,29 @@
-    .cikk-kontener {
-  max-width: 800px;
-  margin: 0 auto; /* Középre igazítja az egész cikket */
-  padding: 40px 20px;
+:host {
+  display: block;
 }
 
-.vissza-gomb {
-  background-color: transparent;
-  border: none;
-  color: #4e6b18; /* Zöldes árnyalat a korábbi JSON alapján */
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 30px;
-  text-decoration: none;
+::ng-deep .cikk-tartalom {
+  color: #d1d5db;
 }
 
-.vissza-gomb:hover {
+::ng-deep .cikk-tartalom p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+::ng-deep .cikk-tartalom a {
+  color: #4ade80;
   text-decoration: underline;
 }
 
-.cikk-cim {
-  font-size: 36px;
-  color: #2e3a31;
-  margin-bottom: 20px;
-  line-height: 1.2;
+::ng-deep .cikk-tartalom a:hover {
+  color: #86efac;
 }
 
-.cikk-tartalom {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
-}
-
-/* 
-  Ezzel a trükkel (módszerrel, technikával) az Angular
-  a beágyazott HTML-ben lévő képeket is reszponzívvá teszi! 
-*/
 ::ng-deep .cikk-tartalom img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 20px 0;
-}
-
-.betoltes-kontener {
-  text-align: center;
-  padding: 100px 20px;
-  font-size: 20px;
-  color: #666;
+  border-radius: 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
