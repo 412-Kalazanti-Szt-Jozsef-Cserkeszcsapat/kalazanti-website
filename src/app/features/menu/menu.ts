@@ -8,6 +8,8 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   styleUrl: './menu.css',
 })
 export class Menu {
+  donationUrl = 'https://donate.stripe.com/test_bJe5kC90H25tbCDdYL3wQ00'; // Custom link a támogatáshoz
+
   routes = [
     { path: '', label: 'Kezdőlap', exact: true },
     { path: 'programok', label: 'Programok', exact: false },
