@@ -1,16 +1,12 @@
 <div class="hir-card">
   <div class="hir-content">
-    <!-- A 'cim' helyett most már 'title' -->
-    <h3>{{ adat.title }}</h3>
-    
-    <!-- A 'tartalom' helyett 'content'. 
-         Mivel a backendről jövő JSON-ben ez HTML kód, az [innerHTML] használata a legszebb (legjobb, legcélravezetőbb) megoldás, hogy a böngésző formázva mutassa. -->
-    <div [innerHTML]="adat.content"></div>
+    <h3>{{ adat().title }}</h3>
+    <div [innerHTML]="adat().content"></div>
   </div>
   
-  <!-- A 'kepUrl' helyett 'thumbnailImage'. 
-       Mivel ez a mező lehet null (üres, hiányzó) a modell alapján, érdemes egy *ngIf-el védeni, hogy csak akkor jelenjen meg, ha tényleg van kép. -->
-  <div class="hir-image-container" *ngIf="adat.thumbnailImage">
-    <img [src]="adat.thumbnailImage" [alt]="adat.title">
-  </div>
+  @if (adat().thumbnailImage) {
+    <div class="hir-image-container">
+      <img [src]="adat().thumbnailImage" [alt]="adat().title">
+    </div>
+  }
 </div>

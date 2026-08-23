@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { BlogPost } from '../../../core/models/blog-post.model';
 
 @Component({
   selector: 'app-hir-elem',
+  standalone: true,
   templateUrl: './hir-elem.html',
   styleUrl: './hir-elem.css'
 })
 export class HirElemComponent {
-  @Input() adat!: BlogPost;
+  readonly adat = input.required<BlogPost>();
 }

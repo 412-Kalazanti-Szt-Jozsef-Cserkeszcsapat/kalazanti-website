@@ -1,16 +1,15 @@
 <div class="hirek-container">
   <h2>Legfrissebb híreink</h2>
   
-  <!-- Ellenőrizzük, hogy vannak-e egyáltalán hírek -->
-  <div *ngIf="hirekLista.length === 0" class="nincs-hir">
-    <p>Jelenleg nincsenek elérhető hírek.</p>
-  </div>
+  @if (hirekLista().length === 0) {
+    <div class="nincs-hir">
+      <p>Jelenleg nincsenek elérhető hírek.</p>
+    </div>
+  }
 
-  <!-- Végigmegyünk a hirekLista tömbön, és minden elemet átadunk a gyermek komponensnek -->
   <div class="hirek-grid">
-    <app-hir-elem 
-      *ngFor="let aktualisHir of hirekLista" 
-      [adat]="aktualisHir">
-    </app-hir-elem>
+    @for (aktualisHir of hirekLista(); track aktualisHir.url) {
+      <app-hir-elem [adat]="aktualisHir" />
+    }
   </div>
 </div>
