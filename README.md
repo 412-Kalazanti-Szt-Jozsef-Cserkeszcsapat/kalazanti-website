@@ -10,7 +10,46 @@ To start a local development server, run:
 ng serve
 ```
 
+
+
+
+
+
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Project Structure (Clean Feature Architecture)
+
+The project follows a clean, feature-driven architecture:
+
+```
+src/app/
+├── core/                  # App-wide singletons, layout & core configuration
+│   ├── config/            # App and API configuration (app.config.ts, api.config.ts)
+│   ├── navigation/        # Global navigation components & models (menu, nav-item)
+│   └── index.ts           # Barrel export for core module
+├── features/              # Feature modules (self-contained domain units)
+│   ├── about/             # Rólunk page feature
+│   ├── hirek/             # Hírek / Blog feature
+│   │   ├── components/    # hirek-lista, hir-elem, hir-reszletek
+│   │   ├── models/        # blog-post.model.ts
+│   │   ├── services/      # blog.service.ts
+│   │   └── index.ts
+│   ├── home/              # Kezdőlap feature
+│   ├── kapcsolat/         # Kapcsolat feature
+│   ├── not-found/         # 404 Not Found feature
+│   └── programok/         # Programok feature
+├── shared/                # Reusable UI components, pipes, directives
+│   ├── components/        # loading-screen, and future reusable widgets
+│   └── index.ts           # Barrel export for shared components
+├── app.config.ts          # Core config re-export
+├── app.routes.ts          # Root routing configuration
+└── app.ts / app.html      # App shell root component
+```
+
+Path aliases configured in `tsconfig.json`:
+- `@core/*` -> `src/app/core/*`
+- `@shared/*` -> `src/app/shared/*`
+- `@features/*` -> `src/app/features/*`
 
 ## Code scaffolding
 

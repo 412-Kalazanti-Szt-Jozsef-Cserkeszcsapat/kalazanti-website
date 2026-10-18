@@ -1,0 +1,146 @@
+<!-- Hero Section (BLCSCS stílusban háttérképpel és sötét átmenettel) -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
+  <!-- Háttérkép a megadott képekből -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/img/bg.jpg"
+      onerror="this.src='/img/hero.jpg'"
+      alt="412. Kalazanti Szent József Cserkészcsapat tagjai"
+      class="w-full h-full object-cover object-center brightness-60 scale-105 transition-transform duration-1000"
+    />
+    <!-- Finom sötétítő és fókuszáló színátmenetek (scrim) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30"></div>
+    <div class="absolute inset-0 bg-radial-gradient from-transparent via-black/40 to-black/80"></div>
+  </div>
+
+  <!-- Hero Tartalom -->
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+    
+    <!-- Jelvény / Alapítás éve -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8 shadow-lg">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+      <span class="text-xs sm:text-sm font-semibold tracking-wide text-gray-200 uppercase">1989 óta Mátyásföldön</span>
+    </div>
+
+    <!-- Főcím és Csapatszám (BLCSCS stílus) -->
+    <h1 class="mb-6 font-extrabold tracking-tight">
+      <span class="block text-7xl sm:text-8xl md:text-9xl text-green-500 font-black drop-shadow-md leading-none mb-2">
+        412.
+      </span>
+      <span class="block text-3xl sm:text-5xl md:text-6xl text-white font-extrabold leading-tight">
+        Kalazanti Szent József<br class="hidden sm:inline">
+        <span class="text-gray-200">Cserkészcsapat</span>
+      </span>
+    </h1>
+
+    <!-- Rövid bemutatkozás / szlogen -->
+    <p class="max-w-2xl text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed font-light">
+      Több mint 35 éve nevelünk fiatalokat közösségben, természetben, játékkal. Székhelyünk Budapesten, a XVI. kerületben, Mátyásföldön van.
+    </p>
+
+    <!-- Cselekvésre ösztönző gombok -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+      <!-- Csatlakozz a csapatunkhoz (Facebook link a kérés szerint) -->
+      <a
+        [href]="facebookLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold text-base sm:text-lg shadow-xl shadow-green-600/30 hover:shadow-green-500/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span>Csatlakozz a csapatunkhoz</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+
+      <!-- Programok gomb -->
+      <a
+        routerLink="/programok"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/20 bg-white/5 hover:bg-white/15 text-white font-semibold text-base sm:text-lg backdrop-blur-md transition-all duration-200 cursor-pointer"
+      >
+        <span>Programok</span>
+      </a>
+    </div>
+
+    <!-- Lefelé mutató ugróhivatkozás a hírekhez -->
+    <a
+      href="#hirek"
+      class="mt-14 inline-flex flex-col items-center gap-1.5 text-xs uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
+      aria-label="Ugrás a kiemelt hírekhez"
+    >
+      <span>Kiemelt hírek</span>
+      <svg class="w-5 h-5 animate-bounce text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </a>
+
+  </div>
+</section>
+
+<!-- BLCSCS stílusú kampány / információs sáv -->
+<aside class="border-y border-green-800/40 bg-gradient-to-r from-green-950 via-[#0d2818] to-green-950 py-6 px-4 sm:px-6 lg:px-8 text-white shadow-inner">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-4 text-center md:text-left">
+      <div class="w-12 h-12 rounded-2xl bg-green-500/20 border border-green-500/30 flex items-center justify-center shrink-0">
+        <svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      </div>
+      <div>
+        <p class="font-bold text-lg text-white">Érdekel a cserkészet? Csatlakozz hozzánk!</p>
+        <p class="text-sm text-green-200/80">Minden korosztálynak tartunk őrsi és csapatprogramokat a XVI. kerületben.</p>
+      </div>
+    </div>
+
+    <a
+      [href]="facebookLink"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="px-6 py-2.5 rounded-full bg-white text-green-950 hover:bg-green-100 font-bold text-sm shadow-md transition-all shrink-0 cursor-pointer"
+    >
+      Kapcsolatfelvétel
+    </a>
+  </div>
+</aside>
+
+<!-- Kiemelt Hírek Szekció (#hirek) -->
+<section id="hirek" class="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Fejléc -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">Kiemelt hírek</h2>
+        <p class="text-gray-400 text-base">Legfrissebb események, krónikák és felhívások csapatunk életéből</p>
+      </div>
+      
+      <a
+        routerLink="/hirek"
+        class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold transition-colors group cursor-pointer"
+      >
+        <span>Összes hír megtekintése</span>
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Hírek rács (3 elem a legfrissebbekből) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+      @for (hir of kiemeltHirek(); track hir.url) {
+        <app-hir-elem [adat]="hir" />
+      }
+    </div>
+
+    <!-- Gomb a hírek listájához -->
+    <div class="mt-14 text-center">
+      <a
+        routerLink="/hirek"
+        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white font-medium hover:border-green-500 transition-all cursor-pointer"
+      >
+        <span>Minden hír és bejegyzés böngészése</span>
+        <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,53 @@
+<section class="min-h-screen bg-black pt-32 pb-24 px-4 sm:px-6 lg:px-8 text-white">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Fejléc (BLCSCS stílus) -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/30 bg-green-950/40 text-green-400 text-xs sm:text-sm font-semibold mb-4">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span>Csapatnaptár</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Programok</h1>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Tekintsd meg csapatunk eseményeit, portyáit, rajprogramjait és fontos időpontjait!
+      </p>
+    </div>
+
+    <!-- Gyorsműveletek gomb Google Naptárhoz -->
+    <div class="flex justify-center mb-8">
+      <a
+        [href]="calendarDirectLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-green-600 hover:bg-green-500 text-white font-semibold text-sm shadow-lg shadow-green-600/25 transition-all duration-200 cursor-pointer"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z"/>
+        </svg>
+        <span>Hozzáadás saját Google Naptáramhoz</span>
+      </a>
+    </div>
+
+    <!-- Naptár Konténer kerettel és árnyékkal -->
+    <div class="rounded-3xl p-1 sm:p-2 bg-gradient-to-b from-white/15 to-white/5 border border-white/10 shadow-2xl overflow-hidden backdrop-blur-md">
+      <div class="rounded-2xl overflow-hidden bg-[#111827]">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=2iliu2ak7f3a3o1mhag86oan8g%40group.calendar.google.com&ctz=Europe%2FBudapest&bgcolor=%23111827&color=%2316a34a"
+          class="w-full h-[550px] md:h-[680px] border-0"
+          frameborder="0"
+          scrolling="no"
+          title="Kalazanti Csapatnaptár"
+        >
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Lábjegyzet információ -->
+    <div class="mt-8 text-center text-xs text-gray-500">
+      A naptár automatikusan frissül az aktuális eseményekkel és portyákkal.
+    </div>
+
+  </div>
+</section>

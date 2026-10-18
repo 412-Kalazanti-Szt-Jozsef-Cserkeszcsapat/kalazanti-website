@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { NotFound } from './pages/not-found/not-found';
-import { Programok } from './pages/programok/programok';
-import { Kapcsolat } from './pages/kapcsolat/kapcsolat';
-import { Hirek } from './features/hirek/hirek/hirek';
-// Figyelj rá, hogy az import útvonal pontosan egyezzen a te fájlszerkezeteddel!
-import { HirReszletek } from './features/hirek/hir-reszletek/hir-reszletek';
+import { Home } from './features/home/home';
+import { About } from './features/about/about';
+import { Programok } from './features/programok/programok';
+import { Kapcsolat } from './features/kapcsolat/kapcsolat';
+import { Hirek } from './features/hirek/components/hirek/hirek';
+import { HirReszletek } from './features/hirek/components/hir-reszletek/hir-reszletek';
+import { Tamogatas } from './features/tamogatas/tamogatas';
+import { NotFound } from './features/not-found/not-found';
 
 export const routes: Routes = [
   {
@@ -17,16 +18,29 @@ export const routes: Routes = [
     component: Programok
   },
   {
-    path: 'kapcsolat',
-    component: Kapcsolat
-  },
-  {
     path: 'hirek',
     component: Hirek
   },
   {
     path: 'hirek/:url',
     component: HirReszletek
+  },
+  {
+    path: 'kapcsolat',
+    component: Kapcsolat
+  },
+  {
+    path: 'tamogatas',
+    component: Tamogatas
+  },
+  {
+    path: 'adomany',
+    redirectTo: 'tamogatas',
+    pathMatch: 'full'
+  },
+  {
+    path: 'rolunk',
+    component: About
   },
   // A '**' (NotFound) MINDIG a legvégén (utolsóként, legalul) kell legyen!
   {
