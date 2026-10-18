@@ -1,0 +1,233 @@
+:host {
+  display: block;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-spring: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #8cbd9b;
+}
+.card-heading {
+  margin-bottom: 40px;
+}
+.card-heading h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.card-heading > p:last-child {
+  margin: 0;
+  font-size: 13px;
+  color: #9da9a1;
+}
+.form-section {
+  border: 0;
+  padding: 0;
+  margin: 0 0 36px;
+  min-width: 0;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid #354a3b;
+  border-radius: 50%;
+  color: #a4c7af;
+  font-size: 11px;
+}
+.field-help {
+  margin: 10px 0 0;
+  color: #9da9a1;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.amount-button {
+  min-height: 58px;
+  padding: 10px 5px;
+  border: 1px solid #3b463f;
+  border-radius: 28px;
+  background: #1b241e;
+  color: #eef4ef;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.amount-button span {
+  font-size: 11px;
+  font-weight: 500;
+}
+.amount-button:hover {
+  background: #26392c;
+  border-color: #74b889;
+}
+.amount-button.is-selected {
+  border-color: #58cb7b;
+  border-radius: 18px;
+  background: #9af2b6;
+  color: #103a1e;
+  box-shadow: 0 4px 18px #52d17c18;
+  animation: choice-pop 360ms var(--motion-spring);
+}
+.custom-amount {
+  font-size: 12px;
+  font-weight: 600;
+}
+.frequency-section {
+  margin-bottom: 0;
+}
+.frequency-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  border: 1px solid #354139;
+  border-radius: 28px;
+  background: #0c120e;
+  position: relative;
+  isolation: isolate;
+}
+.frequency-switch button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  color: #a7b1aa;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.frequency-switch button.is-selected {
+  background: transparent;
+  color: #e4ffec;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8be6a6;
+  outline-offset: 4px;
+}
+@media (max-width: 480px) {
+  .card-heading h2 {
+    font-size: 22px;
+  }
+  .amount-grid {
+    gap: 8px;
+  }
+  .amount-button {
+    font-size: 13px;
+  }
+  .custom-amount {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.amount-button,
+.frequency-switch button {
+  transition:
+    background 220ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    border-radius 350ms var(--motion-spring),
+    transform 220ms var(--motion-spring),
+    box-shadow 220ms ease;
+}
+.amount-button:active {
+  transform: scale(0.96);
+}
+.frequency-switch::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 24px;
+  background: #2e513b;
+  box-shadow: 0 2px 8px #0003;
+  transition: transform 360ms var(--motion-spring);
+}
+.frequency-switch.is-monthly::before {
+  transform: translateX(100%);
+}
+.frequency-switch button:active {
+  transform: scale(0.96);
+}
+.field-enter {
+  animation: field-reveal 280ms var(--motion-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+.field-leave {
+  animation: field-reveal 180ms var(--motion-ease, cubic-bezier(0.2, 0.8, 0.2, 1)) reverse;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .amount-button:hover:not(.is-selected) {
+    transform: translateY(-2px);
+  }
+}
+@keyframes choice-pop {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes field-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .amount-button:active,
+  .amount-button:hover,
+  .frequency-switch button:active {
+    transform: none;
+  }
+}

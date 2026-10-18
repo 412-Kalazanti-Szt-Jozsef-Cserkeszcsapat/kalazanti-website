@@ -18,7 +18,9 @@ export class DonationService {
     return this.http.get<DonateType[]>(`${this.apiUrl}/types`);
   }
 
-  createCheckoutSession(request: CreateCheckoutSessionRequest): Observable<CheckoutSessionResponse> {
+  createCheckoutSession(
+    request: CreateCheckoutSessionRequest,
+  ): Observable<CheckoutSessionResponse> {
     return this.http.post<CheckoutSessionResponse>(`${this.apiUrl}`, request);
   }
 }

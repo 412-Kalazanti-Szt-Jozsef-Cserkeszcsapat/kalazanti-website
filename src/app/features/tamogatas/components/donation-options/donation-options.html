@@ -1,0 +1,73 @@
+<div class="card-heading">
+  <p class="eyebrow">ONLINE ADOMÁNYOZÁS</p>
+  <h2>Így szeretnék segíteni</h2>
+  <p>Válassz célt és összeget a támogatásodhoz.</p>
+</div>
+
+<app-donation-project-select
+  [types]="store.donateTypes()"
+  [loading]="store.isTypesLoading()"
+  [(selectedId)]="store.selectedTypeId"
+/>
+
+<fieldset class="form-section">
+  <legend class="section-label"><span class="step-number">2</span> Mekkora összeggel?</legend>
+  <div class="amount-grid">
+    @for (amount of store.presetAmounts; track amount) {
+      <button
+        type="button"
+        (click)="store.selectAmount(amount)"
+        [class.is-selected]="store.selectedAmount() === amount"
+        [attr.aria-pressed]="store.selectedAmount() === amount"
+        class="amount-button"
+      >
+        {{ amount | number: '1.0-0' : 'hu' }} <span>Ft</span>
+      </button>
+    }
+    <button
+      type="button"
+      (click)="store.selectAmount('custom')"
+      [class.is-selected]="store.selectedAmount() === 'custom'"
+      [attr.aria-pressed]="store.selectedAmount() === 'custom'"
+      class="amount-button custom-amount"
+    >
+      Más összeg
+    </button>
+  </div>
+  @if (store.selectedAmount() === 'custom') {
+    <app-donation-amount-input
+      [(amount)]="store.customAmount"
+      animate.enter="field-enter"
+      animate.leave="field-leave"
+    />
+  }
+</fieldset>
+
+<fieldset class="form-section frequency-section">
+  <legend class="section-label"><span class="step-number">3</span> Milyen gyakran?</legend>
+  <div class="frequency-switch" [class.is-monthly]="store.frequency() === 'recurring'">
+    <button
+      type="button"
+      (click)="store.selectFrequency('one_time')"
+      [class.is-selected]="store.frequency() === 'one_time'"
+      [attr.aria-pressed]="store.frequency() === 'one_time'"
+    >
+      Egyszeri
+    </button>
+    <button
+      type="button"
+      (click)="store.selectFrequency('recurring')"
+      [class.is-selected]="store.frequency() === 'recurring'"
+      [attr.aria-pressed]="store.frequency() === 'recurring'"
+    >
+      Havonta
+    </button>
+  </div>
+  <p class="field-help">
+    {{
+      store.frequency() === 'recurring'
+        ? 'Havi támogatásoddal kiszámíthatóbbá teszed a csapat működését.'
+        : 'Egyetlen felajánlással is sokat tehetsz a közösségünkért.'
+    }}
+  </p>
+</fieldset>

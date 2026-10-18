@@ -1,0 +1,24 @@
+<div class="custom-amount-field">
+  <label for="egyediAr">Egyedi támogatási összeg</label>
+  <div class="amount-input-wrap">
+    <input
+      id="egyediAr"
+      type="text"
+      inputmode="numeric"
+      autocomplete="off"
+      required
+      [value]="formattedAmount()"
+      (input)="onInput($event)"
+      (beforeinput)="onBeforeInput($event)"
+      [attr.aria-invalid]="amountError() ? true : null"
+      name="customAmount"
+      placeholder="Pl. 10 000"
+      aria-describedby="amount-help amount-error"
+    />
+    <span>Ft</span>
+  </div>
+  <p id="amount-error" class="field-error" aria-live="polite">{{ amountError() }}</p>
+  <p id="amount-help" class="field-help">
+    A minimális támogatási összeg {{ minimumAmount | number: '1.0-0' : 'hu' }} Ft.
+  </p>
+</div>

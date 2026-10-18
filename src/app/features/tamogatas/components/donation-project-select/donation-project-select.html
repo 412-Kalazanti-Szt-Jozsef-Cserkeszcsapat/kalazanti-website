@@ -1,0 +1,47 @@
+<div class="form-section">
+  <label for="chooseProject" class="section-label"
+    ><span class="step-number">1</span> Mit támogatnál?</label
+  >
+  @if (loading()) {
+    <p class="loading-message" role="status">Támogatási célok betöltése…</p>
+  } @else {
+    <button
+      #projectTrigger
+      type="button"
+      id="chooseProject"
+      class="project-trigger"
+      [cdkMenuTriggerFor]="projectMenu"
+      aria-describedby="project-description"
+    >
+      <span>{{ selectedType()?.title ?? 'Válassz támogatási célt' }}</span>
+      <span class="select-chevron" aria-hidden="true"></span>
+    </button>
+    <ng-template #projectMenu>
+      <div
+        cdkMenu
+        class="project-menu"
+        aria-label="Támogatási cél"
+        [style.width.px]="projectTrigger.offsetWidth"
+      >
+        @for (type of types(); track type.id) {
+          <button
+            type="button"
+            cdkMenuItemRadio
+            [cdkMenuItemChecked]="selectedId() === type.id"
+            (cdkMenuItemTriggered)="selectedId.set(type.id)"
+            class="project-option"
+          >
+            <span
+              ><strong>{{ type.title }}</strong
+              ><small>{{ type.description }}</small></span
+            >
+            @if (selectedId() === type.id) {
+              <span aria-hidden="true">✓</span>
+            }
+          </button>
+        }
+      </div>
+    </ng-template>
+  }
+  <p id="project-description" class="field-help">{{ selectedType()?.description }}</p>
+</div>

@@ -1,2 +1,120 @@
-/* Tamogatas styles */
-
+:host {
+  display: block;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-spring: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.donation-page {
+  min-height: 100vh;
+  padding: 80px 24px 80px;
+  color: #f5f7f5;
+  background: radial-gradient(ellipse at 50% 10%, #122219 0, #080d0a 38%, #000 72%);
+}
+.donation-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.donation-header {
+  max-width: 710px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+.team-crest {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 18px;
+  padding: 8px;
+  margin: 0 auto 20px;
+}
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #8cbd9b;
+}
+.donation-header h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+.donation-header > p:last-child {
+  color: #a7b1aa;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+.donation-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #303b33;
+  border-radius: 32px;
+  background: #111713;
+  box-shadow: 0 24px 70px #0004;
+}
+.donation-options {
+  padding: 36px;
+  min-width: 0;
+}
+.donation-checkout {
+  padding: 36px;
+  border-left: 1px solid #303b33;
+  background: #19231c;
+  min-width: 0;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8be6a6;
+  outline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .donation-options,
+  .donation-checkout {
+    padding: 26px;
+  }
+  .donation-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .donation-checkout {
+    border-left: 0;
+    border-top: 1px solid #303b33;
+  }
+}
+@media (max-width: 480px) {
+  .donation-page {
+    padding: 48px 16px 48px;
+  }
+  .donation-header {
+    margin-bottom: 28px;
+  }
+  .donation-header h1 {
+    font-size: 29px;
+  }
+  .donation-header > p:last-child {
+    font-size: 13px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .donation-options,
+  .donation-checkout {
+    padding: 24px 20px;
+  }
+  .donation-card {
+    border-radius: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

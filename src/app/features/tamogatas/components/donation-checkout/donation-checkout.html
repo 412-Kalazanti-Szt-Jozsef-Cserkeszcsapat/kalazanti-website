@@ -1,0 +1,44 @@
+<p class="eyebrow">A TE TÁMOGATÁSOD</p>
+<div class="summary-value" aria-live="polite" aria-atomic="true">
+  @for (key of [store.summaryKey()]; track key) {
+    <div class="summary-change">
+      <div class="summary-amount">
+        {{ store.totalAmount() | number: '1.0-0' : 'hu' }}
+        <span>Ft{{ store.frequency() === 'recurring' ? ' / hó' : '' }}</span>
+      </div>
+      <p class="summary-frequency">
+        {{ store.frequency() === 'recurring' ? 'Rendszeres, havi adomány' : 'Egyszeri adomány' }}
+      </p>
+    </div>
+  }
+</div>
+<div class="summary-purpose">
+  <span>Támogatási cél</span>
+  <strong>{{ store.selectedType()?.title ?? 'Támogatási cél kiválasztása' }}</strong>
+</div>
+<label class="consent">
+  <input
+    type="checkbox"
+    name="aszf"
+    [ngModel]="store.consentAccepted()"
+    (ngModelChange)="store.consentAccepted.set($event)"
+    required
+  />
+  <span
+    >Megismertem és elfogadom a Kalazanti Szent József Cserkészcsapatért Alapítvány Általános
+    Tájékoztatóját és az Adatvédelmi Irányelveit.</span
+  >
+</label>
+@if (store.checkoutError()) {
+  <p class="checkout-error" role="alert">{{ store.checkoutError() }}</p>
+}
+<button type="submit" class="donate-button" [disabled]="!store.canSubmit()">
+  @if (store.isSubmitting()) {
+    <span class="loading-spinner" aria-hidden="true"></span> Fizetési oldal előkészítése…
+  } @else {
+    Támogatom <span aria-hidden="true">→</span>
+  }
+</button>
+<p class="checkout-note">A következő lépésben a Stripe biztonságos fizetési oldalára irányítunk.</p>
+
+<app-payment-methods />

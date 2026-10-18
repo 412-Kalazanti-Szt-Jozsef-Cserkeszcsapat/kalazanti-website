@@ -7,8 +7,8 @@ export interface DonateType {
 export type PaymentType = 'one_time' | 'recurring';
 
 export interface CreateCheckoutSessionRequest {
-  amount?: number;
-  payment_type?: PaymentType;
+  amount: number;
+  payment_type: PaymentType;
   donate_type?: number | string | { id?: number; title?: string };
   donate_type_id?: number;
 }

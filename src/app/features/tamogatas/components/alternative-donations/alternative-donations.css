@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+.alternative-heading {
+  margin: 44px 0 22px;
+}
+.alternative-heading h2 {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.alternative-heading p {
+  font-size: 13px;
+  color: #9da9a1;
+  margin: 0;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8be6a6;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

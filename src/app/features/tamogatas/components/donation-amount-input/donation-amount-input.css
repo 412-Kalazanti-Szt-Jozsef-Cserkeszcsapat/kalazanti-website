@@ -1,0 +1,75 @@
+:host {
+  display: block;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-spring: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.amount-input-wrap input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #3b463f;
+  color: #eef4ef;
+  background: #1b241e;
+  font: inherit;
+  color-scheme: dark;
+  padding: 16px 48px 16px 18px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 18px;
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.field-help {
+  margin: 10px 0 0;
+  color: #9da9a1;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.custom-amount-field {
+  margin-top: 16px;
+  transform-origin: top;
+}
+.custom-amount-field label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.amount-input-wrap {
+  position: relative;
+}
+.amount-input-wrap > span {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #a7b1aa;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8be6a6;
+  outline-offset: 4px;
+}
+.field-error {
+  color: #ffb4ab;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.field-error:empty {
+  display: none;
+}
+.amount-input-wrap input:focus {
+  border-color: #7be79e;
+  box-shadow: 0 0 0 4px #52d17c18;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
