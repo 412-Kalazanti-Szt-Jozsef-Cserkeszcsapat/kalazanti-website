@@ -3,7 +3,9 @@
     <!-- Egyszerű zöld spinner közepén a cserkész logóval -->
     <div class="relative w-16 h-16 mb-4 flex items-center justify-center">
       <div class="w-16 h-16 rounded-full border-3 border-white/10 border-t-green-500 animate-spin"></div>
-      <img src="/logo-transparent.png" alt="Kalazanti Cserkészcsapat" class="absolute h-7 w-7 brightness-0 invert opacity-90" />
+      <div class="absolute w-9 h-9 rounded-full bg-white p-1 flex items-center justify-center shadow">
+        <img src="/logo-transparent.png" alt="Kalazanti Cserkészcsapat" class="h-full w-full object-contain" />
+      </div>
     </div>
     
     <p class="text-white font-medium text-base tracking-wide">{{ szoveg() }}</p>

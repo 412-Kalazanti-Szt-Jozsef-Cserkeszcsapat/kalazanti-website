@@ -4,11 +4,13 @@
       
       <!-- Logo és Csapat Név (Bal oldal) -->
       <a routerLink="/" (click)="closeMobileMenu()" class="flex items-center gap-3.5 group no-underline text-white">
-        <img
-          src="/logo-transparent.png"
-          alt="412. Kalazanti Cserkészcsapat Címer"
-          class="h-13 w-13 object-contain transition-transform duration-300 group-hover:scale-105"
-        />
+        <div class="h-12 w-12 sm:h-13 sm:w-13 rounded-2xl bg-white p-1.5 shadow-md flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+          <img
+            src="/logo-transparent.png"
+            alt="412. Kalazanti Cserkészcsapat Címer"
+            class="h-full w-full object-contain"
+          />
+        </div>
         <div class="flex flex-col">
           <span class="text-xl font-bold tracking-tight text-white group-hover:text-green-400 transition-colors">
             412. Kalazanti
