@@ -1,7 +1,8 @@
 export const API_CONFIG = {
-  baseUrl: 'https://7wd8sr5j-8000.euw.devtunnels.ms/',
+  baseUrl: 'http://127.0.0.1:8000/',
   endpoints: {
     blog: '/api/v1/blog',
+    donate: '/api/v1/donate',
   },
 } as const;
 

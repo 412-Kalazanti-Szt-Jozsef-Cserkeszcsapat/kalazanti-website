@@ -26,24 +26,36 @@
     <div class="bg-[#121513] border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md mb-12">
       <form (submit)="onTamogatasSubmit($event)" class="space-y-6">
 
-        <!-- 1. Válassz projektet -->
+        <!-- 1. Válassz célt / típust -->
         <div class="text-center sm:text-left">
           <label for="chooseProject" class="block text-lg font-semibold text-white mb-2 text-center">
-            Válassz projektet:
+            Válassz támogatási célt:
           </label>
           <div class="max-w-md mx-auto">
-            <select
-              id="chooseProject"
-              [ngModel]="valasztottProjekt()"
-              (ngModelChange)="valasztottProjekt.set($event)"
-              name="project"
-              required
-              class="w-full bg-[#1b201c] border border-white/20 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-green-500 transition-colors"
-            >
-              <option value="altalanos">Általános működés és csapatfenntartás</option>
-              <option value="taborok">Nyári csapat- és őrsi táborok</option>
-              <option value="otthon">Cserkészotthon felszerelése és felújítása</option>
-            </select>
+            @if (isTypesLoading()) {
+              <div class="w-full bg-[#1b201c] border border-white/20 rounded-xl px-4 py-3 text-gray-400 text-sm text-center">
+                Támogatási célok betöltése...
+              </div>
+            } @else {
+              <select
+                id="chooseProject"
+                [ngModel]="valasztottDonateTypeId()"
+                (ngModelChange)="valasztottDonateTypeId.set(+$event)"
+                name="project"
+                required
+                class="w-full bg-[#1b201c] border border-white/20 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-green-500 transition-colors cursor-pointer"
+              >
+                @for (type of donateTypes(); track type.id) {
+                  <option [value]="type.id">{{ type.title }}</option>
+                }
+              </select>
+            }
+
+            @if (kivalasztottDonateType()?.description) {
+              <p class="text-xs text-gray-400 mt-2 text-center italic">
+                {{ kivalasztottDonateType()?.description }}
+              </p>
+            }
           </div>
         </div>
 
@@ -212,15 +224,38 @@
           </div>
         </div>
 
+        <!-- Hibaüzenet megjelenítése -->
+        @if (hibaUzenet()) {
+          <div class="max-w-md mx-auto p-3.5 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-sm text-center flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 flex-shrink-0 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>{{ hibaUzenet() }}</span>
+          </div>
+        }
+
         <!-- 8. Beküldés / Támogatás gomb -->
         <div class="max-w-md mx-auto pt-2">
           <button
             type="submit"
-            [disabled]="!aszfElfogadva() || vegosszeg() <= 0"
-            class="w-full py-4 rounded-full bg-green-600 hover:bg-green-500 disabled:opacity-50 disabled:hover:bg-green-600 text-white font-bold text-lg shadow-xl shadow-green-600/30 transition-all duration-200 cursor-pointer"
+            [disabled]="!aszfElfogadva() || vegosszeg() < 412 || isSubmitting()"
+            class="w-full py-4 rounded-full bg-green-600 hover:bg-green-500 disabled:opacity-50 disabled:hover:bg-green-600 text-white font-bold text-lg shadow-xl shadow-green-600/30 transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
           >
-            Támogatom! ({{ vegosszeg() | number }} Ft)
+            @if (isSubmitting()) {
+              <svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+              <span>Fizetési oldal előkészítése...</span>
+            } @else {
+              <span>Támogatom! ({{ vegosszeg() | number }} Ft)</span>
+            }
           </button>
+          @if (vegosszeg() > 0 && vegosszeg() < 412) {
+            <p class="text-xs text-amber-400 text-center mt-2">
+              A minimális támogatási összeg 412 Ft.
+            </p>
+          }
         </div>
 
       </form>
@@ -259,7 +294,7 @@
             </div>
             <div>
               <span class="block text-xs text-gray-500">Közlemény:</span>
-              <span class="text-gray-300">Adomány - {{ valasztottProjekt() }}</span>
+              <span class="text-gray-300">Adomány - {{ kivalasztottDonateType()?.title ?? 'Általános' }}</span>
             </div>
           </div>
         </div>
