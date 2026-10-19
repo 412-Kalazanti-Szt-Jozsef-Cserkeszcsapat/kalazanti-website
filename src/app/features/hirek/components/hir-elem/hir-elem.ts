@@ -1,6 +1,6 @@
 import { Component, input, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { BlogPost } from '../../models/blog-post.model';
+import { BlogPost, BlogPostListItem } from '../../models/blog-post.model';
 import { API_CONFIG } from '../../../../core/config/api.config';
 
 @Component({
@@ -11,16 +11,16 @@ import { API_CONFIG } from '../../../../core/config/api.config';
   styleUrl: './hir-elem.css'
 })
 export class HirElemComponent {
-  adat = input.required<BlogPost>();
+  adat = input.required<BlogPostListItem | BlogPost>();
   
   teljesKepUrl = computed(() => {
     const kep = this.adat().thumbnailImage;
     if (!kep) return null;
-    return kep.startsWith('http') ? kep : `${API_CONFIG.baseUrl}${kep}`;
+    return kep.startsWith('http') ? kep : `${API_CONFIG.baseUrl.replace(/\/+$/, '')}/${kep.replace(/^\/+/, '')}`;
   });
 
   kivonat = computed(() => {
-    const hir = this.adat();
+    const hir = this.adat() as BlogPost;
     if (hir.summary) return hir.summary;
     if (hir.lead) return hir.lead;
     if (hir.excerpt) return hir.excerpt;
@@ -39,12 +39,23 @@ export class HirElemComponent {
 
   szerzo = computed(() => {
     const hir = this.adat();
-    return hir.authorName || hir.author || '412. Kalazanti Csapat';
+    if (hir.created_by) {
+      const parts = [hir.created_by.last_name, hir.created_by.first_name].filter(Boolean);
+      if (parts.length > 0) {
+        return parts.join(' ');
+      }
+    }
+    const legacyHir = hir as BlogPost;
+    return legacyHir.authorName || legacyHir.author || '412. Kalazanti Csapat';
   });
 
   datum = computed(() => {
     const hir = this.adat();
-    const rawDate = hir.publishedDate || hir.date || hir.created_at;
+    const rawDate =
+      ('publishedDate' in hir ? hir.publishedDate : undefined) ||
+      ('date' in hir ? hir.date : undefined) ||
+      hir.created_at;
+
     if (rawDate) {
       const d = new Date(rawDate);
       if (!isNaN(d.getTime())) {

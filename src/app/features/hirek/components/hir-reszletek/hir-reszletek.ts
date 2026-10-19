@@ -26,7 +26,8 @@ export class HirReszletek implements OnInit {
       this.blogService.getBlogPostByUrl(url).subscribe({
         next: (adat) => {
           // Ha relatívak a képek a szerver HTML-ben, itt korrigáljuk az elérési utat
-          const javitottTartalom = adat.content.replace(/src="\/media/g, `src="${API_CONFIG.baseUrl}/media`);
+          const content = adat.content ?? '';
+          const javitottTartalom = content.replace(/src="\/media/g, `src="${API_CONFIG.baseUrl}/media`);
           this.cikk.set({ ...adat, content: javitottTartalom });
         },
         error: (err) => {

@@ -1,3 +1,17 @@
+export interface UserPreview {
+  first_name?: string;
+  last_name?: string;
+}
+
+export interface BlogPostListItem {
+  title: string;
+  url: string;
+  summary: string;
+  created_at: string;
+  thumbnailImage?: string | null;
+  created_by?: UserPreview | null;
+}
+
 export interface BlogPost {
   title: string;
   url: string;
@@ -13,6 +27,7 @@ export interface BlogPost {
   summary?: string;
   excerpt?: string;
   description?: string;
+  created_by?: UserPreview | null;
 }
 
 export interface Tag {
